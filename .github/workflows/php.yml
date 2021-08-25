@@ -4,7 +4,7 @@ on: ["push", "pull_request"]
 
 jobs:
   build_and_test:
-    name: Build and test ethereum-tx with ${{ matrix.php-version }}
+    name: Build and test kardiachain-tx with ${{ matrix.php-version }}
     strategy:
       matrix:
         php-version: ["7.3", "7.4", "8.0"]

@@ -1,20 +1,20 @@
-# ethereum-tx
+# kardiachain-tx
 [![PHP](https://github.com/web3p/ethereum-tx/actions/workflows/php.yml/badge.svg)](https://github.com/web3p/ethereum-tx/actions/workflows/php.yml)
-[![codecov](https://codecov.io/gh/web3p/ethereum-tx/branch/master/graph/badge.svg)](https://codecov.io/gh/web3p/ethereum-tx)
+[![codecov](https://codecov.io/gh/web3p/kardiachain-tx/branch/master/graph/badge.svg)](https://codecov.io/gh/web3p/ethereum-tx)
 
-Ethereum transaction library in PHP.
+Kardiachain transaction library in PHP.
 
 # Install
 
 ```
-composer require web3p/ethereum-tx
+composer require web3p/kardiachain-tx
 ```
 
 # Usage
 
 Create a transaction:
 ```php
-use Web3p\EthereumTx\Transaction;
+use Web3p\KardiachainTx\Transaction;
 
 // without chainId
 $transaction = new Transaction([
@@ -45,14 +45,14 @@ $transaction = new Transaction('0xf86c098504a817c8008252089435353535353535353535
 
 Sign a transaction:
 ```php
-use Web3p\EthereumTx\Transaction;
+use Web3p\KardiachainTx\Transaction;
 
 $signedTransaction = $transaction->sign('your private key');
 ```
 
 # API
 
-### Web3p\EthereumTx\Transaction
+### Web3p\KardiachainTx\Transaction
 
 #### sha3
 
@@ -69,7 +69,7 @@ String input
 * Encode string.
 
 ```php
-use Web3p\EthereumTx\Transaction;
+use Web3p\KardiachainTx\Transaction;
 
 $transaction = new Transaction([
     'nonce' => '0x01',
@@ -94,7 +94,7 @@ Returns recursive length prefix encoding of transaction data.
 * Serialize the transaction data.
 
 ```php
-use Web3p\EthereumTx\Transaction;
+use Web3p\KardiachainTx\Transaction;
 
 $transaction = new Transaction([
     'nonce' => '0x01',
@@ -121,7 +121,7 @@ String privateKey - hexed private key with zero prefixed.
 * Sign the transaction data.
 
 ```php
-use Web3p\EthereumTx\Transaction;
+use Web3p\KardiachainTx\Transaction;
 
 $transaction = new Transaction([
     'nonce' => '0x01',
@@ -146,7 +146,7 @@ Returns keccak256 encoding of serialized transaction data.
 * Hash serialized transaction data.
 
 ```php
-use Web3p\EthereumTx\Transaction;
+use Web3p\KardiachainTx\Transaction;
 
 $transaction = new Transaction([
     'nonce' => '0x01',

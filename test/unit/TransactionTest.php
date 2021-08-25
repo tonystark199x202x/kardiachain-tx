@@ -2,8 +2,9 @@
 
 namespace Test\Unit;
 
+use InvalidArgumentException;
 use Test\TestCase;
-use Web3p\EthereumTx\Transaction;
+use Web3p\KardiachainTx\Transaction;
 
 class TransactionTest extends TestCase
 {
@@ -157,7 +158,7 @@ class TransactionTest extends TestCase
         for ($i=0; $i<count($tests); $i++) {
             try {
                 $transaction->sign($tests[$i]);
-            } catch (\InvalidArgumentException $e) {
+            } catch (InvalidArgumentException $e) {
                 $this->assertEquals('Private key should be hex encoded string', $e->getMessage());
             }
         }

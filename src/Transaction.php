@@ -1,29 +1,30 @@
 <?php
 
 /**
- * This file is part of ethereum-tx package.
+ * This file is part of kardiachain-tx package.
  * 
- * (c) Kuan-Cheng,Lai <alk03073135@gmail.com>
+ * (c) Tony Stark <tonystsark199x202x@gmail.com>
  * 
- * @author Peter Lai <alk03073135@gmail.com>
+ * @author Tony Stark <tonystark199x202x@gmail.com>
  * @license MIT
  */
 
-namespace Web3p\EthereumTx;
+namespace Web3p\KardiachainTx;
 
-use InvalidArgumentException;
-use RuntimeException;
-use Web3p\RLP\RLP;
+use ArrayAccess;
 use Elliptic\EC;
 use Elliptic\EC\KeyPair;
-use ArrayAccess;
+use InvalidArgumentException;
+use RuntimeException;
 use Web3p\EthereumUtil\Util;
+use Web3p\RLP\RLP;
+use Web3p\RLP\RLP\Buffer;
 
 /**
  * It's a instance for generating/serializing ethereum transaction.
  * 
  * ```php
- * use Web3p\EthereumTx\Transaction;
+ * use Web3p\KardiachainTx\Transaction;
  * 
  * // generate transaction instance with transaction parameters
  * $transaction = new Transaction([
@@ -52,9 +53,9 @@ use Web3p\EthereumUtil\Util;
  * $hashedTx = $transaction->serialize();
  * ```
  * 
- * @author Peter Lai <alk03073135@gmail.com>
+ * @author Tony Stark <tonystark199x202x@gmail.com>
  * @link https://www.web3p.xyz
- * @filesource https://github.com/web3p/ethereum-tx
+ * @filesource https://github.com/tonystark199x202x/kardiachain-tx
  */
 class Transaction implements ArrayAccess
 {
@@ -136,28 +137,28 @@ class Transaction implements ArrayAccess
     /**
      * RLP encoding instance
      * 
-     * @var \Web3p\RLP\RLP
+     * @var RLP
      */
     protected $rlp;
 
     /**
      * secp256k1 elliptic curve instance
      * 
-     * @var \Elliptic\EC
+     * @var EC
      */
     protected $secp256k1;
 
     /**
      * Private key instance
      * 
-     * @var \Elliptic\EC\KeyPair
+     * @var KeyPair
      */
     protected $privateKey;
 
     /**
      * Ethereum util instance
      * 
-     * @var \Web3p\EthereumUtil\Util
+     * @var Util
      */
     protected $util;
 
@@ -343,7 +344,7 @@ class Transaction implements ArrayAccess
     /**
      * RLP serialize the ethereum transaction.
      * 
-     * @return \Web3p\RLP\RLP\Buffer serialized ethereum transaction
+     * @return Buffer serialized ethereum transaction
      */
     public function serialize()
     {
@@ -386,7 +387,7 @@ class Transaction implements ArrayAccess
         ]);
         $r = $signature->r;
         $s = $signature->s;
-        $v = $signature->recoveryParam + 35;
+        $v = $signature->recoveryParam + 27;
 
         $chainId = $this->offsetGet('chainId');
 
@@ -470,7 +471,7 @@ class Transaction implements ArrayAccess
             if ($chainId && $chainId > 0) {
                 $v -= ($chainId * 2);
             }
-            $v -= 35;
+            $v -= 27;
             $publicKey = $this->secp256k1->recoverPubKey($txHash, [
                 'r' => $r,
                 's' => $s

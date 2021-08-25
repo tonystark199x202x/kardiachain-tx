@@ -1,12 +1,12 @@
 {
-    "name": "web3p/ethereum-tx",
-    "description": "Ethereum transaction library in PHP.",
+    "name": "tonystark/kardiachain-tx",
+    "description": "Kardiachain transaction library in PHP.",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "sc0Vu",
-            "email": "alk03073135@gmail.com"
+            "name": "tonystark",
+            "email": "tonystark199x202x@gmail.com"
         }
     ],
     "require-dev": {
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Web3p\\EthereumTx\\": "src/"
+            "Web3p\\KardiachainTx\\": "src/"
         }
     },
     "autoload-dev": {
