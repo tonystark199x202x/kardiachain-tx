@@ -7,7 +7,7 @@ Kardiachain transaction library in PHP.
 # Install
 
 ```
-composer require web3p/kardiachain-tx
+composer require tonystark/kardiachain-tx
 ```
 
 # Usage
